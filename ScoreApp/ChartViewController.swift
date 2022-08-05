@@ -9,11 +9,12 @@ import UIKit
 import Charts
 
 class ChartViewController: UIViewController {
-    @IBOutlet weak var linechart: LineChartView!
-    @IBOutlet weak var piecht: PieChartView!
+
     var chartView: LineChartView!
     var chartDataSet: LineChartDataSet!
     @IBOutlet var backButton: UIButton!
+    
+    
 
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
     let unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0]
