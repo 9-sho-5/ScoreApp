@@ -16,7 +16,7 @@ xcuserdata/
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 ### Xcodeのビルドファイル
 ### https://gist.github.com/adamgit/3786883
-build/
+.build/
 DerivedData/
 
 ### 手動で廃止（deprecate）したクラスのファイルがここへ移動する（同じ名前のクラスを定義しようとしたときなど）
@@ -57,7 +57,6 @@ DerivedData/
 ### https://developer.apple.com/library/archive/qa/qa1514/_index.html
 /*.gcno
 
-.build/
 
 Pods/
 
