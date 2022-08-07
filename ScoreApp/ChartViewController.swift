@@ -14,18 +14,20 @@ class ChartViewController: UIViewController {
     var chartDataSet: LineChartDataSet!
     @IBOutlet var backButton: UIButton!
     
+    // ユーザーデフォルト
+    let data: UserDefaults = UserDefaults.standard
     
-
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-    let unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+    var subjectName: String!
     
     // 今回使用するサンプルデータ
-    let sampleData = [88.0, 99.0, 93.0, 67.0, 45.0, 72.0, 58.0, 91.0, 81.0]
+//    let sampleData = [88.0, 99.0, 93.0, 67.0, 45.0, 72.0, 58.0, 91.0, 81.0]
 
     override func viewDidLoad() {
        super.viewDidLoad()
+        // ユーザーフォルトから教科ごとのデータ取得する
+        let graphData = data.object(forKey: "\(subjectName!)") as! [Double]
         // グラフを表示する
-        displayChart(data: sampleData)
+        displayChart(data: graphData)
     }
     
     func displayChart(data: [Double]) {

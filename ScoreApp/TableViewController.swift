@@ -11,6 +11,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet var tableView: UITableView!
     var subjectList = ["現代文", "数学", "化学", "物理", "英語", "世界史"]
+    
+    var selectedCellIndex: Int!
+    
+    // ユーザーデフォルト
+    let data: UserDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +23,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        
+        let emptyArray = [Double]()
+        for i in 0..<subjectList.count {
+            data.set(emptyArray, forKey: subjectList[i])
+        }
     }
     
 
@@ -34,13 +44,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedCellIndex = indexPath.row
+        
         self.performSegue(withIdentifier: "toChart", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toChart"){
             let nextVC = segue.destination as? ChartViewController
+            nextVC!.subjectName = subjectList[selectedCellIndex]
         }
    }
+    
 
 }
